@@ -1,1 +1,1 @@
-worker:
+worker: java -jar target/bill-1.0-SNAPSHOT.jar
