@@ -1,13 +1,15 @@
 package org.example.commands.general;
 
 
+import net.dv8tion.jda.api.EmbedBuilder;
 import org.example.commands.JDA.ExecuteArgs;
 import org.example.commands.JDA.ICommand;
-import net.dv8tion.jda.api.EmbedBuilder;
 
 import java.awt.*;
 
-import static org.example.utils.Constants.*;
+import static org.example.utils.CommandNamesConstants.*;
+import static org.example.utils.MiscConstants.BOT_NAME;
+import static org.example.utils.MiscConstants.PREFIX;
 
 public class CommandInfo implements ICommand {
 

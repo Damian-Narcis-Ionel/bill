@@ -52,6 +52,7 @@ public class JDACommands extends ListenerAdapter {
             }
         } else {
             command.execute(new ExecuteArgs(event));
+            System.out.println("Command "+event.getMessage()+" execute in channel "+event.getChannel()+" by the user "+event.getAuthor()+" in the server"+ event.getGuild());
         }
     }
 

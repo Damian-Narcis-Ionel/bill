@@ -5,14 +5,19 @@ import net.dv8tion.jda.api.managers.AudioManager;
 import org.example.commands.JDA.ExecuteArgs;
 import org.example.commands.JDA.ICommand;
 import org.example.components.PlayerManager;
-import org.example.utils.Constants;
+import org.example.utils.CommandNamesConstants;
+import org.example.utils.MiscConstants;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Arrays;
+import java.util.List;
 
-import static org.example.utils.Constants.*;
+import static org.example.utils.ErrorNamesConstants.ERROR_USER_NOT_IN_VOICE_CHANNEL;
 
 public class CommandPlay implements ICommand {
+
+    private final List<String> argsNames = Arrays.asList("Playlist link/Song link/Song name");
 
     @Override
     public void execute(ExecuteArgs executeArgs) {
@@ -31,7 +36,7 @@ public class CommandPlay implements ICommand {
         }
 
         String link = String.join(" ", executeArgs.getArgs());
-        link = link.replace(Constants.PREFIX+getName()+" ","");
+        link = link.replace(MiscConstants.PREFIX+getName()+" ","");
 
         if(!isUrl(link)){
             link = "ytsearch: "+link + " official music video";
@@ -52,16 +57,21 @@ public class CommandPlay implements ICommand {
 
     @Override
     public String getName() {
-        return PLAY_COMMAND_NAME;
+        return CommandNamesConstants.PLAY_COMMAND_NAME;
     }
 
     @Override
     public String helpMessage() {
-        return PLAY_COMMAND_DESC;
+        return CommandNamesConstants.PLAY_COMMAND_DESC;
     }
 
     @Override
     public boolean needOwner() {
         return false;
     }
+
+    public List<String> getArgsNames() {
+        return argsNames;
+    }
+
 }

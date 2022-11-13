@@ -10,7 +10,9 @@ import com.sedmelluq.discord.lavaplayer.track.AudioPlaylist;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
-import org.example.utils.Constants;
+import org.example.utils.CommandNamesConstants;
+import org.example.utils.ErrorNamesConstants;
+import org.example.utils.MiscConstants;
 
 import java.util.HashMap;
 import java.util.List;
@@ -63,7 +65,7 @@ public class PlayerManager {
 
                 if(trackURL.contains("ytsearch:")){
                     musicManager.scheduler.queue(tracks.get(0));
-                    textChannel.sendMessage("The track" + tracks.get(0).getInfo().title  +"was added to queue")
+                    textChannel.sendMessage("The track **" + tracks.get(0).getInfo().title  +"** was added to queue")
                             .queue();
                 }else{
                     if(!tracks.isEmpty()){
@@ -91,7 +93,7 @@ public class PlayerManager {
 
         if(musicManager.audioPlayer.isPaused()){
             textChannel.sendTyping().queue();
-            textChannel.sendMessage("Music is already paused. Type "+ Constants.PREFIX + Constants.RESUME_COMMAND_NAME+" to resume the music").queue();
+            textChannel.sendMessage("Music is already paused. Type "+ MiscConstants.PREFIX + CommandNamesConstants.RESUME_COMMAND_NAME+" to resume the music").queue();
             return;
         }
 

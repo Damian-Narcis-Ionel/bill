@@ -1,15 +1,8 @@
 package org.example.utils;
 
-public class Constants {
+import static org.example.utils.MiscConstants.MY_DISCORD;
 
-    public static final String PREFIX = "b.";
-
-    public static final String TOKEN = System.getenv("TOK");
-    public static final String DEFAULT_STATUS_PLAYING = "with other bots";
-    public static final String INFO_COMMAND = "info";
-    public static final String BOT_NAME = "Bill The Basic Bot";
-    public static final String MY_DISCORD = "Asɨy \uD83E\uDDF8#1546";
-    public static final String INFO_MESSAGE = "The bot is in testing, feel free to report any bugs you find at "+ MY_DISCORD;
+public class CommandNamesConstants {
 
     public static final String PLAY_COMMAND_NAME = "play";
     public static final String PLAY_COMMAND_DESC = "Command is used to play music";
@@ -31,9 +24,11 @@ public class Constants {
     public static final String SHUFFLE_COMMAND_DESC = "This Command is used to shuffle the current queue";
     public static final String HELP_COMMAND_NAME = "help";
     public static final String HELP_COMMAND_DESC = "This Command is used to see the list of commands";
-
-    public static final String ERROR_USER_NOT_IN_VOICE_CHANNEL = "You need to be in a voice channel for this command to work";
-    public static final String ERROR_BOT_NOT_IN_VOICE_CHANNEL = "I need to be in a voice channel for this command to work";
-    public static final String ERROR_NOT_SAME_CHANNEL = "We have to be in the same voice channel for this command to work";
+    public static final String SKIP_COMMAND_NAME = "skip";
+    public static final String SKIP_COMMAND_DESC = "This Command is used to skip the current song";
+    public static final String INFO_MESSAGE = "The bot is in testing, feel free to report any bugs you find at "+ MY_DISCORD;
+    public static final String INFO_COMMAND = "info";
+    public static final String COINFLIP_COMMAND = "coinflip";
+    public static final String COINFLIP_DESC = "This command imitates a coin flip. This is a 100% random way to solve your choices in life.";
 
 }

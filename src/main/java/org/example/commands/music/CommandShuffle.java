@@ -6,17 +6,20 @@ import org.example.commands.JDA.ICommand;
 import org.example.components.GuildMusicManager;
 import org.example.components.PlayerManager;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
+import org.example.utils.CommandNamesConstants;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-import static org.example.utils.Constants.SHUFFLE_COMMAND_DESC;
-import static org.example.utils.Constants.SHUFFLE_COMMAND_NAME;
+import static org.example.utils.CommandNamesConstants.SHUFFLE_COMMAND_DESC;
 
 public class CommandShuffle implements ICommand {
+
+    private final List<String> argsNames = Arrays.asList("NONE");
 
     @Override
     public void execute(ExecuteArgs executeArgs) {
@@ -40,7 +43,7 @@ public class CommandShuffle implements ICommand {
 
     @Override
     public String getName() {
-        return SHUFFLE_COMMAND_NAME;
+        return CommandNamesConstants.SHUFFLE_COMMAND_NAME;
     }
 
     @Override
@@ -53,4 +56,7 @@ public class CommandShuffle implements ICommand {
         return false;
     }
 
+    public List<String> getArgsNames() {
+        return argsNames;
+    }
 }

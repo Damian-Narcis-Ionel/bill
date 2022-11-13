@@ -1,8 +1,6 @@
 package org.example.commands.music;
 
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
-import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
-import com.sedmelluq.discord.lavaplayer.track.AudioTrackInfo;
 import net.dv8tion.jda.api.entities.GuildVoiceState;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
@@ -17,15 +15,14 @@ import java.util.List;
 
 import static org.example.utils.ErrorNamesConstants.*;
 
-public class CommandNowPlaying implements ICommand {
+public class CommandSkip implements ICommand {
 
     private final List<String> argsNames = Arrays.asList("NONE");
 
     @Override
-    public void execute(ExecuteArgs executeArgs) {
-
-        final TextChannel channel = executeArgs.getTextChannel();
-        final Member self = executeArgs.getSelfMember();
+    public void execute(ExecuteArgs var1) {
+        final TextChannel channel = var1.getTextChannel();
+        final Member self = var1.getSelfMember();
         final GuildVoiceState selfVoiceState = self.getVoiceState();
 
         if (!selfVoiceState.inAudioChannel()) {
@@ -33,11 +30,11 @@ public class CommandNowPlaying implements ICommand {
             return;
         }
 
-        final Member member = executeArgs.getMember();
+        final Member member = var1.getMember();
         final GuildVoiceState memberVoiceState = member.getVoiceState();
 
         if (!memberVoiceState.inAudioChannel()) {
-            channel.sendMessage(ERROR_USER_NOT_IN_VOICE_CHANNEL).queue();
+            channel.sendMessage(ERROR_BOT_NOT_IN_VOICE_CHANNEL).queue();
             return;
         }
 
@@ -46,31 +43,26 @@ public class CommandNowPlaying implements ICommand {
             return;
         }
 
-        final GuildMusicManager musicManager = PlayerManager.getINSTANCE().getMusicManager(executeArgs.getGuild());
+        final GuildMusicManager musicManager = PlayerManager.getINSTANCE().getMusicManager(var1.getGuild());
         final AudioPlayer audioPlayer = musicManager.audioPlayer;
-        final AudioTrack track = audioPlayer.getPlayingTrack();
 
-        if (track == null) {
+        if (audioPlayer.getPlayingTrack() == null) {
             channel.sendMessage("There is no track playing currently").queue();
             return;
-
         }
 
-        final AudioTrackInfo info = track.getInfo();
-
-
-        channel.sendMessageFormat("Now playing `%s` by `%s` (Link: <%s>)", info.title, info.author, info.uri).queue();
-
+        musicManager.scheduler.nextTrack();
+        channel.sendMessage("Skipped the current track").queue();
     }
 
     @Override
     public String getName() {
-        return CommandNamesConstants.NOWPLAYING_COMMAND_NAME;
+        return CommandNamesConstants.SKIP_COMMAND_NAME;
     }
 
     @Override
     public String helpMessage() {
-        return CommandNamesConstants.NOWPLAYING_COMMAND_DESC;
+        return CommandNamesConstants.SKIP_COMMAND_DESC;
     }
 
     @Override

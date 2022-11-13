@@ -3,8 +3,8 @@ package org.example.commands.general;
 import org.example.commands.JDA.ExecuteArgs;
 import org.example.commands.JDA.ICommand;
 
-import static org.example.utils.Constants.LEAVE_COMMAND_DESC;
-import static org.example.utils.Constants.LEAVE_COMMAND_NAME;
+import static org.example.utils.CommandNamesConstants.LEAVE_COMMAND_DESC;
+import static org.example.utils.CommandNamesConstants.LEAVE_COMMAND_NAME;
 
 public class CommandLeave implements ICommand {
     @Override
