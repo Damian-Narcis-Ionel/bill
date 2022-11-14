@@ -6,12 +6,16 @@ import org.example.commands.JDA.ExecuteArgs;
 import org.example.commands.JDA.ICommand;
 
 import java.awt.*;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.example.utils.CommandNamesConstants.*;
 import static org.example.utils.MiscConstants.BOT_NAME;
 import static org.example.utils.MiscConstants.PREFIX;
 
 public class CommandInfo implements ICommand {
+
+    private final List<String> argsNames = Arrays.asList("NONE");
 
     @Override
     public void execute(ExecuteArgs executeArgs) {
@@ -49,5 +53,10 @@ public class CommandInfo implements ICommand {
     @Override
     public boolean needOwner() {
         return false;
+    }
+
+    @Override
+    public List<String> getArgsNames() {
+        return argsNames;
     }
 }

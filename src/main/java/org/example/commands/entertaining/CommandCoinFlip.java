@@ -3,10 +3,16 @@ package org.example.commands.entertaining;
 import org.example.commands.JDA.ExecuteArgs;
 import org.example.commands.JDA.ICommand;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.example.utils.CommandNamesConstants.COINFLIP_COMMAND;
 import static org.example.utils.CommandNamesConstants.COINFLIP_DESC;
 
 public class CommandCoinFlip implements ICommand {
+
+    private final List<String> argsNames = Arrays.asList("NONE");
+
     @Override
     public void execute(ExecuteArgs var1) {
 
@@ -38,5 +44,10 @@ public class CommandCoinFlip implements ICommand {
     @Override
     public boolean needOwner() {
         return false;
+    }
+
+    @Override
+    public List<String> getArgsNames() {
+        return argsNames;
     }
 }

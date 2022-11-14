@@ -8,6 +8,7 @@ import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.utils.cache.CacheFlag;
 import org.example.commands.JDA.JDACommands;
 import org.example.commands.entertaining.CommandCoinFlip;
+import org.example.commands.general.CommandHelp;
 import org.example.commands.general.CommandInfo;
 import org.example.commands.general.CommandLeave;
 import org.example.commands.music.*;
@@ -56,6 +57,7 @@ public class Main {
         jdaCommands.registerCommand(new CommandShuffle());
         jdaCommands.registerCommand(new CommandSkip());
         jdaCommands.registerCommand(new CommandCoinFlip());
+        jdaCommands.registerCommand(new CommandHelp(jdaCommands));
 
         try{
 
